@@ -12,13 +12,16 @@ function Home() {
   return (
     <div className="App">
       <header className="App-header">
-        <img
-          hidden={!isReady}
-          src="https://www.freeiconspng.com/uploads/file-pokeball-png-0.png"
-          className="App-logo"
-          alt="logo"
-          style={{ padding: "10px" }}
-        />
+        <NavLink to='/pokedex'>
+          <img
+            hidden={!isReady}
+            src="https://www.freeiconspng.com/uploads/file-pokeball-png-0.png"
+            className="App-logo"
+            alt="logo"
+            style={{ padding: "10px" }}
+          />
+        </NavLink>
+
         {/* Commented out the requirement */}
         {/* <b>
           Requirement: Try to show the hidden image and make it clickable that
@@ -52,6 +55,8 @@ function Home() {
 
             // Conditional statements for inline if else (conditional rendering)
             // Source: https://stackoverflow.com/questions/40477245/is-it-possible-to-use-if-else-statement-in-react-render-function
+
+            // Show the hidden image and make it clickable that goes to /pokedex when the input below is "Ready!"
             text == ("Ready!" || "ready!" || "READY!")  ? setIsReady(true) : setIsReady(false)
           }}
         />
