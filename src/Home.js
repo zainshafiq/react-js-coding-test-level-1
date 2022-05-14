@@ -19,14 +19,19 @@ function Home() {
             style={{ padding: "5"}}
             width='50%'
           />
-        <NavLink className='hover-link' to='/pokedex'>
-          <img
-            hidden={!isReady}
-            src="https://www.freeiconspng.com/uploads/file-pokeball-png-0.png"
-            className="App-logo"
-            alt="logo"
-            style={{ padding: "10px" }}
-          />
+        <NavLink className='hover-link' to='/pokedex' style={{textDecoration: 'none'}}>
+          <>
+            <img
+              hidden={!isReady}
+              src="https://www.freeiconspng.com/uploads/file-pokeball-png-0.png"
+              className="App-logo"
+              alt="logo"
+              style={{ padding: "10px" }}
+            />
+            <p hidden={!isReady}  style={{color: 'white'}}>
+              Press the Pokeball!
+            </p>
+          </>
         </NavLink>
 
         {/* Commented out the requirement */}

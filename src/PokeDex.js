@@ -26,7 +26,7 @@ function PokeDex() {
     overlay: { backgroundColor: "grey" },
   };
 
-  const pokedexURL_1 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=5`)
+  const pokedexURL_1 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=0`)
 
   // Calling API and Retrieved data by making https request through axios (Loader timer:  4s)
   // Source : (1) https://www.npmjs.com/package/axios#example
