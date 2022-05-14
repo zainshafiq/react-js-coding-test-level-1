@@ -2,6 +2,9 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+// Import alert
+import Swal from 'sweetalert2'
+
 function Home() {
   const [text, setText] = useState("");
   const [isReady, setIsReady] = useState(false);
@@ -22,8 +25,37 @@ function Home() {
           red text away when "Ready!" is in the textbox.
         </b>
         <p>Are you ready to be a pokemon master?</p>
-        <input type="text" name="name" />
-        <span style={{ color: "red" }}>I am not ready yet!</span>
+        <input 
+          type="text" 
+          name="name"
+          onChange={(e) => {
+            let text = e.target.value
+          
+            // Conditional statements to check for text input 
+          
+            // if (text === 'Ready!' || 'ready!' || 'READY!')
+            //   setIsReady(true)
+          
+            // else if (text === 'Ready' || 'ready' || 'READY') {
+            //   setIsReady(false)
+            //   // If the user miss the <!> sign  
+            //   Swal.fire(
+            //     'Almost there!',
+            //     'You miss something',
+            //     'info'
+            //   )
+            // }
+
+            // else
+            //   return setIsReady(false)
+
+            // Conditional statements for inline if else (conditional rendering)
+            text == ("Ready!" || "ready!" || "READY!")  ? setIsReady(true) : setIsReady(false)
+          }}
+        />
+        
+        {/* Hide the red text away when "Ready!" is in the textbox */}
+        { (isReady) ? (null && undefined) : <span style={{ color: "red" }}>I am not ready yet!</span>}
       </header>
     </div>
   );
