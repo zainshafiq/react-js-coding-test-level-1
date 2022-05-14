@@ -19,12 +19,13 @@ function Home() {
           alt="logo"
           style={{ padding: "10px" }}
         />
-        <b>
+        {/* Commented out the requirement */}
+        {/* <b>
           Requirement: Try to show the hidden image and make it clickable that
           goes to /pokedex when the input below is "Ready!" remember to hide the
           red text away when "Ready!" is in the textbox.
-        </b>
-        <p>Are you ready to be a pokemon master?</p>
+        </b> */}
+        <h2>Are you ready to be a pokemon master?</h2>
         <input 
           type="text" 
           name="name"
@@ -50,9 +51,11 @@ function Home() {
             //   return setIsReady(false)
 
             // Conditional statements for inline if else (conditional rendering)
+            // Source: https://stackoverflow.com/questions/40477245/is-it-possible-to-use-if-else-statement-in-react-render-function
             text == ("Ready!" || "ready!" || "READY!")  ? setIsReady(true) : setIsReady(false)
           }}
         />
+        <br/>
         
         {/* Hide the red text away when "Ready!" is in the textbox */}
         { (isReady) ? (null && undefined) : <span style={{ color: "red" }}>I am not ready yet!</span>}
