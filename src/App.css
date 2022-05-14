@@ -30,14 +30,14 @@
 
 .hover-list:hover {
   color: yellow;
-  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 25px rgb(255, 255, 255);
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px rgb(255, 255, 255);
   cursor: url('https://cur.cursors-4u.net/games/images13/gam1308.gif'), auto;
 }
 
 .hover-link:hover {
   color: yellow;
   border-radius: 25px;
-  text-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 50px rgb(255, 255, 255);
+  text-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px rgb(255, 255, 255);
   background-image: linear-gradient(to bottom right, red, black);
   cursor: url('https://cur.cursors-4u.net/games/images13/gam1308.gif'), auto;
 }
