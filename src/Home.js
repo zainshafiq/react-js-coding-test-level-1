@@ -12,6 +12,13 @@ function Home() {
   return (
     <div className="App">
       <header className="App-header">
+        <img
+            hidden={isReady}
+            src="https://i.dlpng.com/static/png/1269952-logo-pokemonpng-pokemon-logo-png-1600_1067_preview.png"
+            alt="Pokemon Logo"
+            style={{ padding: "5"}}
+            width='50%'
+          />
         <NavLink className='hover-link' to='/pokedex'>
           <img
             hidden={!isReady}
@@ -63,7 +70,9 @@ function Home() {
         <br/>
         
         {/* Hide the red text away when "Ready!" is in the textbox */}
-        { (isReady) ? (null && undefined) : <span style={{ color: "red" }}>I am not ready yet!</span>}
+        { (isReady) ? (null && undefined) : 
+          <span style={{ color: "red" }}>I am not ready yet!</span>
+        }
       </header>
     </div>
   );
