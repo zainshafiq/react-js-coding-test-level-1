@@ -4,6 +4,9 @@ import ReactLoading from "react-loading";
 import axios from "axios";
 import Modal from "react-modal";
 
+// Import alert
+import Swal from 'sweetalert2'
+
 function PokeDex() {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonDetail, setPokemonDetail] = useState(null);
@@ -22,6 +25,23 @@ function PokeDex() {
     },
     overlay: { backgroundColor: "grey" },
   };
+
+  // Calling API and Retrieved data by making https request through axios
+  // https://www.npmjs.com/package/axios#example
+  const getData = async () => {
+    await axios.get(`https://pokeapi.co/api/v2/pokemon`)
+    .then(response => {
+      console.log('Successfully retrieved!')
+      setPokemons(response.data.results)
+    })
+    .catch(error => 
+      console.log(error, 'Failed to retrive!')
+    )
+  }
+
+  useEffect(() => {
+    getData()
+  },[])
 
   if (!isLoading && pokemons.length === 0) {
     return (
@@ -56,7 +76,14 @@ function PokeDex() {
           <>
             <div className="App">
               <header className="App-header">
-                <b>Implement loader here</b>
+                <b>
+                  <img
+                    src="https://www.freeiconspng.com/uploads/file-pokeball-png-0.png"
+                    className="App-logo"
+                    alt="logo"
+                    style={{ padding: "10px" }}
+                  />
+                </b>
               </header>
             </div>
           </>
@@ -64,6 +91,13 @@ function PokeDex() {
           <>
             <h1>Welcome to pokedex !</h1>
             <b>Implement Pokedex list here</b>
+            <list>
+              {
+                pokemons.map((pokemon,index) => (
+                  <td>{pokemon.name}</td>
+                ))
+              }
+            </list>
           </>
         )}
       </header>
