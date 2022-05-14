@@ -28,7 +28,7 @@ function PokeDex() {
 
   const pokedexURL_1 = (`https://pokeapi.co/api/v2/pokemon`)
 
-  // Calling API and Retrieved data by making https request through axios (Loader:  4s)
+  // Calling API and Retrieved data by making https request through axios (Loader timer:  4s)
   // Source : (1) https://www.npmjs.com/package/axios#example
   //        : (2) https://blog.logrocket.com/using-axios-react-native-manage-api-requests/
   const getData_Details = async () => {
@@ -120,7 +120,7 @@ function PokeDex() {
                 pokemons.map((pokemon,index) => (
                   <tr>
                     <td className="hover-item" onClick={() => {getPokedex_Details(pokemon.url)}}>
-                      
+                      <br/>
                       {pokemon.name.toUpperCase()}
                     </td>
                   </tr>
