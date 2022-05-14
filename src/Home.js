@@ -12,7 +12,7 @@ function Home() {
   return (
     <div className="App">
       <header className="App-header">
-        <NavLink to='/pokedex'>
+        <NavLink className='hover-link' to='/pokedex'>
           <img
             hidden={!isReady}
             src="https://www.freeiconspng.com/uploads/file-pokeball-png-0.png"

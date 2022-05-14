@@ -28,6 +28,20 @@
   color: #61dafb;
 }
 
+.hover-list:hover {
+  background-color: yellow;
+  color: blue;
+  cursor: url('https://cur.cursors-4u.net/games/images13/gam1308.gif'), auto;
+}
+
+.hover-link:hover {
+  cursor: url('https://cur.cursors-4u.net/games/images13/gam1308.gif'), auto;
+}
+
+.padding-item {
+  padding: 25px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

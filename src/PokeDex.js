@@ -119,8 +119,7 @@ function PokeDex() {
               {
                 pokemons.map((pokemon,index) => (
                   <tr>
-                    <td className="hover-item" onClick={() => {getPokedex_Details(pokemon.url)}}>
-                      <br/>
+                    <td className="hover-list padding-item" onClick={() => {getPokedex_Details(pokemon.url)}}>
                       {pokemon.name.toUpperCase()}
                     </td>
                   </tr>
