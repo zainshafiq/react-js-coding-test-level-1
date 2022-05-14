@@ -39,6 +39,7 @@ function PokeDex() {
           setIsLoading(false)
         }, 4000)
         setPokemons(response.data.results)
+        console.log(response.data.results, 'Successfully retrieved')
       }
     })
     .catch(error =>
@@ -59,9 +60,9 @@ function PokeDex() {
           <h2>Requirement:</h2>
           <ul>
             <li>
-              Call this api:https://pokeapi.co/api/v2/pokemon to get pokedex, and show a list of pokemon name.
+              Call this api:https://pokeapi.co/api/v2/pokemon to get pokedex, and show a list of pokemon name. DONE DONE
             </li>
-            <li>Implement React Loading and show it during API call</li>
+            <li>Implement React Loading and show it during API call DONE DONE </li> 
             <li>when hover on the list item , change the item color to yellow.</li>
             <li>when clicked the list item, show the modal below</li>
             <li>
@@ -99,13 +100,15 @@ function PokeDex() {
           <>
             <h1>Welcome to pokedex !</h1>
             <b>Implement Pokedex list here</b>
-            <list>
+            <div>
               {
                 pokemons.map((pokemon,index) => (
-                  <td>{pokemon.name}</td>
+                  <tr>
+                    <td className="hover-item">{pokemon.name}</td>
+                  </tr>
                 ))
               }
-            </list>
+            </div>
           </>
         )}
       </header>
