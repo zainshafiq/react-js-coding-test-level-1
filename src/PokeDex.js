@@ -31,7 +31,7 @@ function PokeDex() {
   // Calling API and Retrieved data by making https request through axios (Loader timer:  4s)
   // Source : (1) https://www.npmjs.com/package/axios#example
   //        : (2) https://blog.logrocket.com/using-axios-react-native-manage-api-requests/
-  const getData = async () => {
+  const getData_Details = async () => {
     await axios.get(pokedexURL_1)
     .then(response => {
       if(response.data.results.length > 0) {
@@ -49,8 +49,23 @@ function PokeDex() {
   }
 
   useEffect(() => {
-    getData()
+    getData_Details()
   },[])
+
+  const getPokedex_Details = async (url) => {
+    await axios.get(url)
+    .then(response => {
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 4000)
+      setPokemonDetail(response.data)
+      console.log(response.data, 'Successfully retrieved')
+    })
+    .catch(error =>
+      console.log(error, 'Failed to retrive!')
+    )
+    .finally(() => setIsLoading(true)); // Complete loading success/fail
+  }
 
   if (!isLoading && pokemons.length === 0) {
     return (
@@ -63,8 +78,8 @@ function PokeDex() {
               Call this api:https://pokeapi.co/api/v2/pokemon to get pokedex, and show a list of pokemon name. DONE DONE
             </li>
             <li>Implement React Loading and show it during API call DONE DONE </li> 
-            <li>when hover on the list item , change the item color to yellow.</li>
-            <li>when clicked the list item, show the modal below</li>
+            <li>when hover on the list item , change the item color to yellow. DONE DONE </li>
+            <li>when clicked the list item, show the modal below. DONE DONE</li>
             <li>
               Add a search bar on top of the bar for searching, search will run
               on keyup event
@@ -104,7 +119,10 @@ function PokeDex() {
               {
                 pokemons.map((pokemon,index) => (
                   <tr>
-                    <td className="hover-item">{pokemon.name}</td>
+                    <td className="hover-item" onClick={() => {getPokedex_Details(pokemon.url)}}>
+                      <br/>
+                      {pokemon.name.toUpperCase()}
+                    </td>
                   </tr>
                 ))
               }
