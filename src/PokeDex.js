@@ -114,7 +114,7 @@ function PokeDex() {
         ) : (
           <>
             <h1>Welcome to pokedex !</h1>
-            <b>Implement Pokedex list here</b>
+            {/* <b>Implement Pokedex list here</b> */}
             <div>
               {
                 pokemons.map((pokemon,index) => (
