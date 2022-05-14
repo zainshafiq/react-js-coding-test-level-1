@@ -26,17 +26,25 @@ function PokeDex() {
     overlay: { backgroundColor: "grey" },
   };
 
-  // Calling API and Retrieved data by making https request through axios
-  // https://www.npmjs.com/package/axios#example
+  const pokedexURL_1 = (`https://pokeapi.co/api/v2/pokemon`)
+
+  // Calling API and Retrieved data by making https request through axios (Loader timer:  4s)
+  // Source : (1) https://www.npmjs.com/package/axios#example
+  //        : (2) https://blog.logrocket.com/using-axios-react-native-manage-api-requests/
   const getData = async () => {
-    await axios.get(`https://pokeapi.co/api/v2/pokemon`)
+    await axios.get(pokedexURL_1)
     .then(response => {
-      console.log('Successfully retrieved!')
-      setPokemons(response.data.results)
+      if(response.data.results.length > 0) {
+        setTimeout(() => {
+          setIsLoading(false)
+        }, 4000)
+        setPokemons(response.data.results)
+      }
     })
-    .catch(error => 
+    .catch(error =>
       console.log(error, 'Failed to retrive!')
     )
+    .finally(() => setIsLoading(true)); // Complete loading success/fail
   }
 
   useEffect(() => {
