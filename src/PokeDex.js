@@ -14,6 +14,16 @@ function PokeDex() {
   const [pokemonDetail, setPokemonDetail] = useState(null);
   const [isLoading, setIsLoading] = useState(false)
 
+  this.state = {
+    bgColor: ''
+  }
+
+  const onChange = (e) => {
+    this.setState({
+      bgColor: 'red'
+    })
+  }
+
   const customStyles = {
     content: {
       top: "50%",
@@ -195,7 +205,7 @@ function PokeDex() {
             <div className="margin-link">
             <Pagination>
                 <PaginationItem>
-                  <PaginationLink className="margin-link" onClick={() => getData_Details()}> 1 </PaginationLink>
+                  <PaginationLink className="margin-link" onClick={() => this.onChange()}> 1 </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
                   <PaginationLink className="margin-link" onClick={() => getData_Details1()}> 2 </PaginationLink>
