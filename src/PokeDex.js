@@ -30,10 +30,10 @@ function PokeDex() {
     overlay: { backgroundColor: "grey" },
   };
 
-  const pokedexURL_1 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=${0}`)
-  const pokedexURL_2 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=${5}`)
-  const pokedexURL_3 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=${10}`)
-  const pokedexURL_4 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=${15}`)
+  const pokedexURL_1 = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${0}`)
+  const pokedexURL_2 = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${3}`)
+  const pokedexURL_3 = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${6}`)
+  const pokedexURL_4 = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${15}`)
 
   // Calling API and Retrieved data by making https request through axios (Loader timer:  4s)
   // Source : (1) https://www.npmjs.com/package/axios#example
