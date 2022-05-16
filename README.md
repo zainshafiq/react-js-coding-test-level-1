@@ -1,3 +1,8 @@
+# Screenshots of PokeDex
+
+## Homepage
+[<img src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Homepage_1.jpg" width="500" height="350">]
+
 # Getting Started with Create React App
 # react-live-coding-test
 ## Follow these steps
