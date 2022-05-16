@@ -186,7 +186,7 @@ function PokeDex() {
               style={{ padding: "0" , margin:'-20px 0 50px 0' }}
               width='25%'
             />
-            <input placeholder="Search your Pokemon here.." className='bg-secondary border-white rounded-pill' style={{marginTop:'-150px'}} type="text" name="name"/>
+            <input placeholder=" Search Pokemon.." className='bg-warning text-primary border-white rounded-pill' style={{marginTop:'-150px'}} type="text" name="name"/>
             <div style={{margin:'20px 0 25px 0'}}>
               {
                 pokemons.map((pokemon,index) => (

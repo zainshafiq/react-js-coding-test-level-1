@@ -42,8 +42,8 @@ function Home() {
         </b> */}
         <h2 style={{padding: '10px 0 30px 0'}}> Are you ready to be a pokemon master? </h2>
         <input 
-          placeholder="Type In Ready!" 
-          className='bg-secondary border-white rounded-pill'
+          placeholder="  Type In Ready!" 
+          className='bg-warning text-primary border-white rounded-pill'
           type="text" 
           name="name"
           onChange={(e) => {
