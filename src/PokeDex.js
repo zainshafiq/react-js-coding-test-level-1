@@ -8,21 +8,13 @@ import Modal from "react-modal";
 import Swal from 'sweetalert2'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap"
+import { FaFire, FaWater } from 'react-icons/fa';
+import { GiHighGrass, GiWindHole } from 'react-icons/gi';
 
 function PokeDex() {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonDetail, setPokemonDetail] = useState(null);
   const [isLoading, setIsLoading] = useState(false)
-
-  this.state = {
-    bgColor: ''
-  }
-
-  const onChange = (e) => {
-    this.setState({
-      bgColor: 'red'
-    })
-  }
 
   const customStyles = {
     content: {
@@ -73,7 +65,7 @@ function PokeDex() {
         }, 1000)
         setPokemons(response.data.results)
         console.log(response.data.results, 'Successfully retrieved')
-        console.log(response.data.results[0])
+        console.log(response.data.results[5])
       }
     })
     .catch(error =>
@@ -91,7 +83,7 @@ function PokeDex() {
         }, 1000)
         setPokemons(response.data.results)
         console.log(response.data.results, 'Successfully retrieved')
-        console.log(response.data.results[0])
+        console.log(response.data.results[10])
       }
     })
     .catch(error =>
@@ -109,7 +101,7 @@ function PokeDex() {
         }, 1000)
         setPokemons(response.data.results)
         console.log(response.data.results, 'Successfully retrieved')
-        console.log(response.data.results[0])
+        console.log(response.data.results[15])
       }
     })
     .catch(error =>
@@ -205,16 +197,16 @@ function PokeDex() {
             <div className="margin-link">
             <Pagination>
                 <PaginationItem>
-                  <PaginationLink className="margin-link" onClick={() => this.onChange()}> 1 </PaginationLink>
+                  <PaginationLink className="bg-light text-success" onClick={() => getData_Details()}> <GiHighGrass /> </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink className="margin-link" onClick={() => getData_Details1()}> 2 </PaginationLink>
+                  <PaginationLink className="bg-danger text-warning" onClick={() => getData_Details1()}> <FaFire />  </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink className="margin-link" onClick={() => getData_Details2()}> 3 </PaginationLink>
+                  <PaginationLink className="bg-primary text-light" onClick={() => getData_Details2()}> <FaWater /> </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink className="margin-link" onClick={() => getData_Details3()}> 4 </PaginationLink>
+                  <PaginationLink className="bg-secondary text-light" onClick={() => getData_Details3()}> <GiWindHole /> </PaginationLink>
                 </PaginationItem>
             </Pagination>
             </div>
