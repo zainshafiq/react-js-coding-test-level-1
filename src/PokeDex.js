@@ -205,18 +205,6 @@ function PokeDex() {
     );
   }
 
-  const data = [
-    { name: 'A', x: 21 },
-    { name: 'B', x: 22 },
-    { name: 'C', x: -32 },
-    { name: 'D', x: -14 },
-    { name: 'E', x: -51 },
-    { name: 'F', x: 16 },
-    { name: 'G', x: 7 },
-    { name: 'H', x: -8 },
-    { name: 'I', x: 9 },
-];
-
   return (
     <div>
       <header className="App-header">
@@ -239,54 +227,76 @@ function PokeDex() {
           <>
             {/* <h1>Welcome to pokedex !</h1>
             <b>Implement Pokedex list here</b> */}
-            <img
-              src="https://cdn.shopify.com/s/files/1/0555/7708/3985/files/Pokedex_Logo2.png?v=1647303194"
-              alt="PokeDex Logo"
-              style={{ padding: "0" , margin:'-20px 0 50px 0' }}
-              width='25%'
-            />
-            <input 
-              placeholder=" Search Pokemon.." 
-              className='bg-warning text-primary border-white rounded-pill' 
-              style={{marginTop:'-150px'}} 
-              type="text" 
-              name="name"
-              onChange={(e) => {
-                if(!e.target.value) {
-                  getData_Details()
-                }
-                updateInput(e.target.value)
-              }}
-            />
-            <div style={{margin:'20px 0 25px 0'}}>
-              {
-                pokemons.map((pokemon,index) => (
-                  <tr>
-                    <td className="hover-list padding-item" onClick={() => {getPokedex_Details(pokemon.url)}}>
-                      {pokemon.name.toUpperCase()}
-                    </td>
-                  </tr>
-                ))
-              }
+            <div className="flex-container">
+              <div>
+                <img
+                  src="https://www.pngmart.com/files/13/Mewtwo-Transparent-Images-PNG.png"
+                  alt="Mewtwo"
+                  style={{margin:'100px 0 0 300px'}}
+                  width='500px'
+                />
+              </div>
+              <div>
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0555/7708/3985/files/Pokedex_Logo2.png?v=1647303194"
+                  alt="PokeDex Logo"
+                  style={{ padding: "0", margin:'-100px 0 50px 0' }}
+                  width='500px'
+                />
+              </div>
+              <div>
+                <img
+                  src="https://www.pngmart.com/files/12/Mega-Charizard-PNG-File.png"
+                  alt="Mega Charizard"
+                  style={{margin:'50px 400px 0 0'}}
+                  width='500px'
+                />
+              </div>
             </div>
+            <div style={{margin: '-600px 0 0 0'}}>
+              <input 
+                placeholder=" Search Pokemon.." 
+                className='bg-warning text-primary border-white rounded-pill' 
+                style={{margin:'0 75px 0 0'}} 
+                type="text" 
+                name="name"
+                onChange={(e) => {
+                  if(!e.target.value) {
+                    getData_Details()
+                  }
+                  updateInput(e.target.value)
+                }}
+              />
+              <div style={{margin:'20px 0 25px 75px'}}>
+                {
+                  pokemons.map((pokemon,index) => (
+                    <tr>
+                      <td className="hover-list padding-item" onClick={() => {getPokedex_Details(pokemon.url)}}>
+                        {pokemon.name.toUpperCase()}
+                      </td>
+                    </tr>
+                  ))
+                }
+              </div>
 
-            {/* Implement sorting and pagination
-            Ref Source = https://www.geeksforgeeks.org/reactjs-reactstrap-pagination-component/ */}
-            <div className="margin-link">
-            <Pagination>
-                <PaginationItem>
-                  <PaginationLink className="bg-light text-success" onClick={() => getData_Details1()}> <GiHighGrass /> </PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink className="bg-danger text-warning" onClick={() => getData_Details2()}> <FaFire />  </PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink className="bg-primary text-light" onClick={() => getData_Details3()}> <FaWater /> </PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink className="bg-secondary text-light" onClick={() => getData_Details4()}> <GiWindHole /> </PaginationLink>
-                </PaginationItem>
-            </Pagination>
+              {/* Implement sorting and pagination
+              Ref Source = https://www.geeksforgeeks.org/reactjs-reactstrap-pagination-component/ */}
+              <div className="margin-link" style={{margin:'0 0 0 75px'}}>
+                <Pagination>
+                  <PaginationItem>
+                    <PaginationLink className="bg-light text-success" onClick={() => getData_Details1()}> <GiHighGrass /> </PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink className="bg-danger text-warning" onClick={() => getData_Details2()}> <FaFire />  </PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink className="bg-primary text-light" onClick={() => getData_Details3()}> <FaWater /> </PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink className="bg-secondary text-light" onClick={() => getData_Details4()}> <GiWindHole /> </PaginationLink>
+                  </PaginationItem>
+                </Pagination>
+              </div>
             </div>
           </>
         )}
