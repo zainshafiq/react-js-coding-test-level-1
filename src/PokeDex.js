@@ -3,19 +3,23 @@ import { useState, useEffect } from "react";
 import ReactLoading from "react-loading";
 import axios from "axios";
 import Modal from "react-modal";
+import React from "react";
 
 // Import extra components
 import Swal from 'sweetalert2'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Pagination, PaginationItem, PaginationLink, Table } from "reactstrap"
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 import { FaFire, FaWater } from 'react-icons/fa';
 import { GiHighGrass, GiWindHole } from 'react-icons/gi';
+import Pdf from "react-to-pdf";
 
 function PokeDex() {
   const [pokemons, setPokemons] = useState([])
   const [pokemonDetail, setPokemonDetail] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [input, searchInput] = useState('')
+  const ref = React.createRef();
 
   const customStyles = {
     content: {
@@ -201,6 +205,18 @@ function PokeDex() {
     );
   }
 
+  const data = [
+    { name: 'A', x: 21 },
+    { name: 'B', x: 22 },
+    { name: 'C', x: -32 },
+    { name: 'D', x: -14 },
+    { name: 'E', x: -51 },
+    { name: 'F', x: 16 },
+    { name: 'G', x: 7 },
+    { name: 'H', x: -8 },
+    { name: 'I', x: 9 },
+];
+
   return (
     <div>
       <header className="App-header">
@@ -280,17 +296,17 @@ function PokeDex() {
         <Modal isOpen={pokemonDetail} contentLabel={pokemonDetail?.name || ""} onRequestClose={() => {setPokemonDetail(null)}} style={customStyles}>          {/* <div>
           Requirement:
           <ul>
-            <li>show the sprites front_default as the pokemon image</li>
+            <li>show the sprites front_default as the pokemon image DONE</li>
             <li>
               Show the stats details - only stat.name and base_stat is
-              required in tabular format
+              required in tabular format DONE DONE
             </li>
-            <li>Create a bar chart based on the stats above</li>
-            <li>Create a  buttton to download the information generated in this modal as pdf. (images and chart must be included)</li>
+            <li>Create a bar chart based on the stats above DONE BUT INSTEAD OF BAR I USED RADAR TYPE </li>
+            <li>Create a  buttton to download the information generated in this modal as pdf. (images and chart must be included) DONE DONE</li>
           </ul>
           </div> */}
         
-          <div className='bg-warning' style={{textAlign:'center'}}>
+          <div ref={ref} className='bg-warning' style={{textAlign:'center'}}>
             <img width='200px' style={{textAlign:'center'}} src={pokemonDetail.sprites.front_default} />
             <Table className="text-light bg-primary text-xl">
               <thead>
@@ -310,6 +326,25 @@ function PokeDex() {
                 })}
               </tbody>
             </Table>
+
+            {/* Create a bar chart based on the stats above
+            Ref Source: https://www.geeksforgeeks.org/create-a-radar-chart-using-recharts-in-reactjs/ */}
+            <div>
+            <RadarChart height={250} width={750} outerRadius="80%" data={pokemonDetail.stats}>
+              <PolarGrid stroke="black" />
+              <PolarAngleAxis stroke="black" dataKey='stat.name'/>
+              <PolarRadiusAxis stroke="black" />
+              <Radar dataKey="base_stat" stroke="black" fill="white" fillOpacity={0.8}/>
+            </RadarChart>
+            </div>
+
+            {/* Create a  buttton to download the information generated in this modal as pdf. (images and chart must be included)
+            Ref Source: https://www.npmjs.com/package/react-to-pdf */}
+            <div>
+              <Pdf targetRef={ref} filename="pokedex-charts.pdf">
+                {({ toPdf }) => <button className='bg-danger text-light' onClick={toPdf}>Generate Pdf</button>}
+              </Pdf>
+            </div>
           </div>
         </Modal>
       )}
