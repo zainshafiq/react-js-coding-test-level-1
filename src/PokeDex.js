@@ -7,7 +7,7 @@ import Modal from "react-modal";
 // Import extra components
 import Swal from 'sweetalert2'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Pagination, PaginationItem, PaginationLink } from "reactstrap"
+import { Pagination, PaginationItem, PaginationLink, Table } from "reactstrap"
 import { FaFire, FaWater } from 'react-icons/fa';
 import { GiHighGrass, GiWindHole } from 'react-icons/gi';
 
@@ -169,7 +169,7 @@ function PokeDex() {
     if(filtered.length === 0) {
       return (
 				<div style={{ padding:'10rem 1.5rem', textAlign:'center' }}>
-					There is no data for '{filtered}'<br /> Please make sure the Pokemon's name is correct.
+					There is no data for '{input}'<br /> Please make sure the Pokemon's name is correct.
 				</div>
 			)
     }
@@ -275,26 +275,41 @@ function PokeDex() {
           </>
         )}
       </header>
+
       {pokemonDetail && (
-        <Modal
-          isOpen={pokemonDetail}
-          contentLabel={pokemonDetail?.name || ""}
-          onRequestClose={() => {
-            setPokemonDetail(null);
-          }}
-          style={customStyles}
-        >
-          <div>
-            Requirement:
-            <ul>
-              <li>show the sprites front_default as the pokemon image</li>
-              <li>
-                Show the stats details - only stat.name and base_stat is
-                required in tabular format
-              </li>
-              <li>Create a bar chart based on the stats above</li>
-              <li>Create a  buttton to download the information generated in this modal as pdf. (images and chart must be included)</li>
-            </ul>
+        <Modal isOpen={pokemonDetail} contentLabel={pokemonDetail?.name || ""} onRequestClose={() => {setPokemonDetail(null)}} style={customStyles}>          {/* <div>
+          Requirement:
+          <ul>
+            <li>show the sprites front_default as the pokemon image</li>
+            <li>
+              Show the stats details - only stat.name and base_stat is
+              required in tabular format
+            </li>
+            <li>Create a bar chart based on the stats above</li>
+            <li>Create a  buttton to download the information generated in this modal as pdf. (images and chart must be included)</li>
+          </ul>
+          </div> */}
+        
+          <div className='bg-warning' style={{textAlign:'center'}}>
+            <img width='200px' style={{textAlign:'center'}} src={pokemonDetail.sprites.front_default} />
+            <Table className="text-light bg-primary text-xl">
+              <thead>
+                <tr>
+                  <th> LEGENDS </th>
+                  <th> BASE STATS </th>
+                </tr>
+              </thead>
+              <tbody>
+                {pokemonDetail.stats.map((stat, index) => {
+                  return ( 
+                    <tr key={index}>
+                      <td align='left'>{stat.stat.name.toUpperCase()}</td>
+                      <td align='center'>{stat.base_stat}</td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </Table>
           </div>
         </Modal>
       )}
