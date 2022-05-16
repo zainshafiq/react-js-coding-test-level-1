@@ -1,12 +1,30 @@
-# Screenshots of PokeDex
+# Screenshots of Pokedex
 
 ## Homepage
 
-<img align="center" src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Homepage_1.jpg" width="700" height="500">
+<img align="centre" src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Homepage_1.jpg" width="700" height="500">
 
 <img align="center" src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Homepage_2.jpg" width="700" height="500">
 
 <img align="center" src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Homepage_3.jpg" width="700" height="500">
+
+## Pokedex
+
+<img align="center" src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Pokedex_1.jpg" width="700" height="500">
+
+<img align="center" src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Pokedex_2.jpg" width="700" height="500">
+
+<img align="center" src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Pokedex_3.jpg" width="700" height="500">
+
+## Pokemon's Sprites
+
+<img align="center" src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Sprites_1.jpg" width="700" height="500">
+
+<img align="center" src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Sprites_2.jpg" width="700" height="500">
+
+## PDF Generator
+
+<img align="center" src="https://github.com/zainshafiq/react-js-coding-test-level-1/blob/3-after-due-time/screenshots/screenshots_2/Pdf_1.jpg" width="700" height="500">
 
 # Getting Started with Create React App
 # react-live-coding-test
