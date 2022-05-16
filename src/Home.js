@@ -14,10 +14,9 @@ function Home() {
       <header className="App-header">
         <img
             hidden={isReady}
-            src="https://i.dlpng.com/static/png/1269952-logo-pokemonpng-pokemon-logo-png-1600_1067_preview.png"
+            src="https://i.dlpng.com/static/png/6849098_preview.png"
             alt="Pokemon Logo"
-            style={{ padding: "5"}}
-            width='50%'
+            width='45%'
           />
         <NavLink className='hover-link' to='/pokedex' style={{textDecoration: 'none'}}>
           <>
@@ -26,7 +25,7 @@ function Home() {
               src="https://www.freeiconspng.com/uploads/file-pokeball-png-0.png"
               className="App-logo"
               alt="logo"
-              style={{ padding: "10px" }}
+              style={{ padding: "30px" }}
             />
             <p hidden={!isReady}  style={{color: 'white'}}>
               Press the Pokeball!
@@ -40,7 +39,7 @@ function Home() {
           goes to /pokedex when the input below is "Ready!" remember to hide the
           red text away when "Ready!" is in the textbox.
         </b> */}
-        <h2>Are you ready to be a pokemon master?</h2>
+        <h2 style={{padding: '0 0 30px 0'}}> Are you ready to be a pokemon master? </h2>
         <input 
           type="text" 
           name="name"
@@ -76,7 +75,7 @@ function Home() {
         
         {/* Hide the red text away when "Ready!" is in the textbox */}
         { (isReady) ? (null && undefined) : 
-          <span style={{ color: "red" }}>I am not ready yet!</span>
+          <span style={{ color: "red" , padding: '10px 0 25px 0'}}>I am not ready yet!</span>
         }
       </header>
     </div>

@@ -12,8 +12,7 @@ import { Pagination, PaginationItem, PaginationLink } from "reactstrap"
 function PokeDex() {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonDetail, setPokemonDetail] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false)
 
   const customStyles = {
     content: {
@@ -190,6 +189,9 @@ function PokeDex() {
                 ))
               }
             </div>
+
+            {/* Implement sorting and pagination
+            Ref Source = https://www.geeksforgeeks.org/reactjs-reactstrap-pagination-component/ */}
             <div className="margin-link">
             <Pagination>
                 <PaginationItem>
