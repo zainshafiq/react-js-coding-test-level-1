@@ -178,9 +178,15 @@ function PokeDex() {
           </>
         ) : (
           <>
-            <h1>Welcome to pokedex !</h1>
-            {/* <b>Implement Pokedex list here</b> */}
-            <div>
+            {/* <h1>Welcome to pokedex !</h1>
+            <b>Implement Pokedex list here</b> */}
+            <img
+              src="https://cdn.shopify.com/s/files/1/0555/7708/3985/files/Pokedex_Logo2.png?v=1647303194"
+              alt="PokeDex Logo"
+              style={{ padding: "0" , marginBottom:'0px' }}
+              width='25%'
+            />
+            <div style={{marginTop:'-150px'}}>
               {
                 pokemons.map((pokemon,index) => (
                   <tr>
