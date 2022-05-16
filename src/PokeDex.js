@@ -183,10 +183,11 @@ function PokeDex() {
             <img
               src="https://cdn.shopify.com/s/files/1/0555/7708/3985/files/Pokedex_Logo2.png?v=1647303194"
               alt="PokeDex Logo"
-              style={{ padding: "0" , marginBottom:'0px' }}
+              style={{ padding: "0" , margin:'-20px 0 50px 0' }}
               width='25%'
             />
-            <div style={{marginTop:'-150px'}}>
+            <input placeholder="Search your Pokemon here.." className='bg-secondary border-white rounded-pill' style={{marginTop:'-150px'}} type="text" name="name"/>
+            <div style={{margin:'20px 0 25px 0'}}>
               {
                 pokemons.map((pokemon,index) => (
                   <tr>

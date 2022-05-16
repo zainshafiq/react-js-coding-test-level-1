@@ -14,9 +14,10 @@ function Home() {
       <header className="App-header">
         <img
             hidden={isReady}
-            src="https://i.dlpng.com/static/png/6849098_preview.png"
+            src="https://www.freepnglogos.com/uploads/pokemon-logo-png-0.png"
             alt="Pokemon Logo"
-            width='45%'
+            style={{margin:'-150px 0 -100px 0'}}
+            width='40%'
           />
         <NavLink className='hover-link' to='/pokedex' style={{textDecoration: 'none'}}>
           <>
@@ -39,8 +40,10 @@ function Home() {
           goes to /pokedex when the input below is "Ready!" remember to hide the
           red text away when "Ready!" is in the textbox.
         </b> */}
-        <h2 style={{padding: '0 0 30px 0'}}> Are you ready to be a pokemon master? </h2>
+        <h2 style={{padding: '10px 0 30px 0'}}> Are you ready to be a pokemon master? </h2>
         <input 
+          placeholder="Type In Ready!" 
+          className='bg-secondary border-white rounded-pill'
           type="text" 
           name="name"
           onChange={(e) => {
