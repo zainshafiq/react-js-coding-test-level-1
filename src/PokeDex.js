@@ -12,9 +12,10 @@ import { FaFire, FaWater } from 'react-icons/fa';
 import { GiHighGrass, GiWindHole } from 'react-icons/gi';
 
 function PokeDex() {
-  const [pokemons, setPokemons] = useState([]);
-  const [pokemonDetail, setPokemonDetail] = useState(null);
+  const [pokemons, setPokemons] = useState([])
+  const [pokemonDetail, setPokemonDetail] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [input, searchInput] = useState('')
 
   const customStyles = {
     content: {
@@ -30,16 +31,17 @@ function PokeDex() {
     overlay: { backgroundColor: "grey" },
   };
 
-  const pokedexURL_1 = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${0}`)
-  const pokedexURL_2 = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${3}`)
-  const pokedexURL_3 = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${6}`)
-  const pokedexURL_4 = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${15}`)
+  const pokedexURL = (`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${0}`)
+  const pokedexURL_Grass = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${0}`)
+  const pokedexURL_Fire = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${3}`)
+  const pokedexURL_Water = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${6}`)
+  const pokedexURL_Fly = (`https://pokeapi.co/api/v2/pokemon?limit=3&offset=${15}`)
 
   // Calling API and Retrieved data by making https request through axios (Loader timer:  4s)
   // Source : (1) https://www.npmjs.com/package/axios#example
   //        : (2) https://blog.logrocket.com/using-axios-react-native-manage-api-requests/
   const getData_Details = async () => {
-    await axios.get(pokedexURL_1)
+    await axios.get(pokedexURL)
     .then(response => {
       if(response.data.results.length > 0) {
         setTimeout(() => {
@@ -57,7 +59,7 @@ function PokeDex() {
   }
 
   const getData_Details1 = async () => {
-    await axios.get(pokedexURL_2)
+    await axios.get(pokedexURL_Grass)
     .then(response => {
       if(response.data.results.length > 0) {
         setTimeout(() => {
@@ -75,7 +77,7 @@ function PokeDex() {
   }
 
   const getData_Details2 = async () => {
-    await axios.get(pokedexURL_3)
+    await axios.get(pokedexURL_Fire)
     .then(response => {
       if(response.data.results.length > 0) {
         setTimeout(() => {
@@ -93,7 +95,25 @@ function PokeDex() {
   }
 
   const getData_Details3 = async () => {
-    await axios.get(pokedexURL_4)
+    await axios.get(pokedexURL_Water)
+    .then(response => {
+      if(response.data.results.length > 0) {
+        setTimeout(() => {
+          setIsLoading(false)
+        }, 1000)
+        setPokemons(response.data.results)
+        console.log(response.data.results, 'Successfully retrieved')
+        console.log(response.data.results[15])
+      }
+    })
+    .catch(error =>
+      console.log(error, 'Failed to retrive!')
+    )
+    .finally(() => setIsLoading(true)); // Complete loading success/fail
+  }
+
+  const getData_Details4 = async () => {
+    await axios.get(pokedexURL_Fly)
     .then(response => {
       if(response.data.results.length > 0) {
         setTimeout(() => {
@@ -115,6 +135,7 @@ function PokeDex() {
     getData_Details1()
     getData_Details2()
     getData_Details3()
+    getData_Details4()
   },[])
 
   const getPokedex_Details = async (url) => {
@@ -132,6 +153,28 @@ function PokeDex() {
     .finally(() => setIsLoading(true)); // Complete loading success/fail
   }
 
+  // Add a search bar on top of the bar for searching, search will run on keyup event
+  // Ref Source: https://medium.com/@pradityadhitama/simple-search-bar-component-functionality-in-react-6589fda3385d
+  const updateInput =  (event) => {
+    const filtered = pokemons.filter((pokemon) => {
+      return pokemon.name.toLowerCase().includes(event.toLowerCase())
+    })
+
+    if(filtered.length !== 0) {
+      setPokemons(filtered)
+      searchInput('')
+      return;
+    }
+
+    if(filtered.length === 0) {
+      return (
+				<div style={{ padding:'10rem 1.5rem', textAlign:'center' }}>
+					There is no data for '{filtered}'<br /> Please make sure the Pokemon's name is correct.
+				</div>
+			)
+    }
+  }
+
   if (!isLoading && pokemons.length === 0) {
     return (
       <div>
@@ -147,9 +190,9 @@ function PokeDex() {
             <li>when clicked the list item, show the modal below. DONE DONE</li>
             <li>
               Add a search bar on top of the bar for searching, search will run
-              on keyup event
+              on keyup event DONE DONE
             </li>
-            <li>Implement sorting and pagingation</li>
+            <li>Implement sorting and pagingation DONE DONE </li>
             <li>Commit your codes after done</li>
             <li>If you do more than expected (E.g redesign the page / create a chat feature at the bottom right). it would be good.</li>
           </ul> */}
@@ -186,7 +229,19 @@ function PokeDex() {
               style={{ padding: "0" , margin:'-20px 0 50px 0' }}
               width='25%'
             />
-            <input placeholder=" Search Pokemon.." className='bg-warning text-primary border-white rounded-pill' style={{marginTop:'-150px'}} type="text" name="name"/>
+            <input 
+              placeholder=" Search Pokemon.." 
+              className='bg-warning text-primary border-white rounded-pill' 
+              style={{marginTop:'-150px'}} 
+              type="text" 
+              name="name"
+              onChange={(e) => {
+                if(!e.target.value) {
+                  getData_Details()
+                }
+                updateInput(e.target.value)
+              }}
+            />
             <div style={{margin:'20px 0 25px 0'}}>
               {
                 pokemons.map((pokemon,index) => (
@@ -204,16 +259,16 @@ function PokeDex() {
             <div className="margin-link">
             <Pagination>
                 <PaginationItem>
-                  <PaginationLink className="bg-light text-success" onClick={() => getData_Details()}> <GiHighGrass /> </PaginationLink>
+                  <PaginationLink className="bg-light text-success" onClick={() => getData_Details1()}> <GiHighGrass /> </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink className="bg-danger text-warning" onClick={() => getData_Details1()}> <FaFire />  </PaginationLink>
+                  <PaginationLink className="bg-danger text-warning" onClick={() => getData_Details2()}> <FaFire />  </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink className="bg-primary text-light" onClick={() => getData_Details2()}> <FaWater /> </PaginationLink>
+                  <PaginationLink className="bg-primary text-light" onClick={() => getData_Details3()}> <FaWater /> </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink className="bg-secondary text-light" onClick={() => getData_Details3()}> <GiWindHole /> </PaginationLink>
+                  <PaginationLink className="bg-secondary text-light" onClick={() => getData_Details4()}> <GiWindHole /> </PaginationLink>
                 </PaginationItem>
             </Pagination>
             </div>
