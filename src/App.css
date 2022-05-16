@@ -42,16 +42,10 @@
   cursor: url('https://cur.cursors-4u.net/games/images13/gam1308.gif'), auto;
 }
 
-.hover-pokemon1:hover {
-  cursor: url('https://cur.cursors-4u.net/games/images13/gam1308.gif'), auto;
-}
-
-.hover-pokemon2:hover {
-  cursor: url('https://cur.cursors-4u.net/games/images13/gam1308.gif'), auto;
-}
-
-.hover-pokemon3:hover {
-  cursor: url('https://cur.cursors-4u.net/games/images13/gam1308.gif'), auto;
+.margin-link {
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px yellow;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .padding-item {

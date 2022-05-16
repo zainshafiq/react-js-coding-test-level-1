@@ -4,13 +4,16 @@ import ReactLoading from "react-loading";
 import axios from "axios";
 import Modal from "react-modal";
 
-// Import alert
+// Import extra components
 import Swal from 'sweetalert2'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Pagination, PaginationItem, PaginationLink } from "reactstrap"
 
 function PokeDex() {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonDetail, setPokemonDetail] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
 
   const customStyles = {
     content: {
@@ -26,7 +29,10 @@ function PokeDex() {
     overlay: { backgroundColor: "grey" },
   };
 
-  const pokedexURL_1 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=0`)
+  const pokedexURL_1 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=${0}`)
+  const pokedexURL_2 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=${5}`)
+  const pokedexURL_3 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=${10}`)
+  const pokedexURL_4 = (`https://pokeapi.co/api/v2/pokemon?limit=5&offset=${15}`)
 
   // Calling API and Retrieved data by making https request through axios (Loader timer:  4s)
   // Source : (1) https://www.npmjs.com/package/axios#example
@@ -37,9 +43,64 @@ function PokeDex() {
       if(response.data.results.length > 0) {
         setTimeout(() => {
           setIsLoading(false)
-        }, 4000)
+        }, 1000)
         setPokemons(response.data.results)
         console.log(response.data.results, 'Successfully retrieved')
+        console.log(response.data.results[0])
+      }
+    })
+    .catch(error =>
+      console.log(error, 'Failed to retrive!')
+    )
+    .finally(() => setIsLoading(true)); // Complete loading success/fail
+  }
+
+  const getData_Details1 = async () => {
+    await axios.get(pokedexURL_2)
+    .then(response => {
+      if(response.data.results.length > 0) {
+        setTimeout(() => {
+          setIsLoading(false)
+        }, 1000)
+        setPokemons(response.data.results)
+        console.log(response.data.results, 'Successfully retrieved')
+        console.log(response.data.results[0])
+      }
+    })
+    .catch(error =>
+      console.log(error, 'Failed to retrive!')
+    )
+    .finally(() => setIsLoading(true)); // Complete loading success/fail
+  }
+
+  const getData_Details2 = async () => {
+    await axios.get(pokedexURL_3)
+    .then(response => {
+      if(response.data.results.length > 0) {
+        setTimeout(() => {
+          setIsLoading(false)
+        }, 1000)
+        setPokemons(response.data.results)
+        console.log(response.data.results, 'Successfully retrieved')
+        console.log(response.data.results[0])
+      }
+    })
+    .catch(error =>
+      console.log(error, 'Failed to retrive!')
+    )
+    .finally(() => setIsLoading(true)); // Complete loading success/fail
+  }
+
+  const getData_Details3 = async () => {
+    await axios.get(pokedexURL_4)
+    .then(response => {
+      if(response.data.results.length > 0) {
+        setTimeout(() => {
+          setIsLoading(false)
+        }, 1000)
+        setPokemons(response.data.results)
+        console.log(response.data.results, 'Successfully retrieved')
+        console.log(response.data.results[0])
       }
     })
     .catch(error =>
@@ -50,6 +111,9 @@ function PokeDex() {
 
   useEffect(() => {
     getData_Details()
+    getData_Details1()
+    getData_Details2()
+    getData_Details3()
   },[])
 
   const getPokedex_Details = async (url) => {
@@ -57,7 +121,7 @@ function PokeDex() {
     .then(response => {
       setTimeout(() => {
         setIsLoading(false)
-      }, 4000)
+      }, 1000)
       setPokemonDetail(response.data)
       console.log(response.data, 'Successfully retrieved')
     })
@@ -71,7 +135,7 @@ function PokeDex() {
     return (
       <div>
         <header className="App-header">
-          <h1>Welcome to pokedex !</h1>
+          {/* <h1>Welcome to pokedex !</h1>
           <h2>Requirement:</h2>
           <ul>
             <li>
@@ -87,7 +151,7 @@ function PokeDex() {
             <li>Implement sorting and pagingation</li>
             <li>Commit your codes after done</li>
             <li>If you do more than expected (E.g redesign the page / create a chat feature at the bottom right). it would be good.</li>
-          </ul>
+          </ul> */}
         </header>
       </div>
     );
@@ -125,6 +189,22 @@ function PokeDex() {
                   </tr>
                 ))
               }
+            </div>
+            <div className="margin-link">
+            <Pagination>
+                <PaginationItem>
+                  <PaginationLink className="margin-link" onClick={() => getData_Details()}> 1 </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink className="margin-link" onClick={() => getData_Details1()}> 2 </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink className="margin-link" onClick={() => getData_Details2()}> 3 </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink className="margin-link" onClick={() => getData_Details3()}> 4 </PaginationLink>
+                </PaginationItem>
+            </Pagination>
             </div>
           </>
         )}
